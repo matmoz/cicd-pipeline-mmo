@@ -7,7 +7,7 @@ pipeline {
         sh 'chmod +x scripts/build.sh'
         sh 'scripts/build.sh'
         echo 'Building finished'
-        sh 'sudo docker build -t docker_image:1.0 .'
+        sh 'sudo docker build -t Dockerfile:1.0 .'
       }
     }
 
