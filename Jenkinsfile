@@ -6,8 +6,8 @@ pipeline {
         echo 'Building application'
         sh 'chmod +x scripts/build.sh'
         sh 'scripts/build.sh'
-        echo 'Building finished'
         sh 'sudo docker build -t mydockerfile:1.0 .'
+        echo 'Building finished'
       }
     }
 
