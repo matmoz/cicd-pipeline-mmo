@@ -6,13 +6,16 @@ pipeline {
         echo 'Building application'
         sh 'chmod +x scripts/build.sh'
         sh 'scripts/build.sh'
-        echo 'Finishing build'
+        echo 'Building finished'
       }
     }
 
     stage('Test') {
       steps {
-        echo 'Testing app'
+        echo 'Testing build'
+        sh 'chmod +x scripts/test.sh'
+        sh 'scripts/test.sh'
+        echo 'Testing finished'
       }
     }
 
