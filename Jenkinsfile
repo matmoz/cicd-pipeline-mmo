@@ -7,12 +7,13 @@ pipeline {
         sh 'chmod +x scripts/build.sh'
         sh 'scripts/build.sh'
         sh 'sudo docker build -t mydockerfile:1.0 .'
-        sh '''\'\'\'
-          withCredentials([usernamePassword(credentialsId: \'dockerhub_id\', usernameVariable: \'DOCKER_USERNAME\', passwordVariable: \'DOCKER_PASSWORD\')]) {
+        script {
+          withCredentials([usernamePassword(credentialsId: 'dockerhub_id', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
             sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
             sh "docker push matmoz/my_dockerhub:1.0"
           }
-        \'\'\''''
+        }
+
         echo 'Building finished'
       }
     }
