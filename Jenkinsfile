@@ -7,6 +7,8 @@ pipeline {
         sh 'chmod +x scripts/build.sh'
         sh 'scripts/build.sh'
         sh 'sudo docker build -t mydockerfile:1.0 .'
+        sh 'docker.withRegistry( \'\', \'dockerhub_id\'){dockerImage.push()}'
+        sh 'docker push matmoz/mydockerfile:1.0'
         echo 'Building finished'
       }
     }
