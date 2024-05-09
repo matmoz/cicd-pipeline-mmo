@@ -6,7 +6,7 @@ pipeline {
         echo 'Building application'
         sh 'chmod +x scripts/build.sh'
         sh 'scripts/build.sh'
-        sh 'sudo docker build -t mydockerfile:1.0 .'
+        sh 'sudo docker build -t my_dockerhub:1.0 .'
         script {
           withCredentials([usernamePassword(credentialsId: 'dockerhub_id', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
             sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
